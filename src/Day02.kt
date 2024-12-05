@@ -1,3 +1,6 @@
+import utils.println
+import utils.readInput
+
 fun main() {
     fun List<Int>.isSafe(): Boolean {
         val diffs = zipWithNext { a, b -> b - a }

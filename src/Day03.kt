@@ -1,3 +1,6 @@
+import utils.println
+import utils.readInput
+
 fun main() {
 
     val regex = "mul\\((\\d*),(\\d*)\\)".toRegex()
