@@ -24,3 +24,25 @@ tailrec fun greatestCommonDivisor(a: Long, b: Long): Long {
     return if (b == 0L) a
     else greatestCommonDivisor(b, a % b)
 }
+
+fun <E> cartesian(lists: List<List<E>>): Sequence<List<E>> {
+    return sequence {
+        val counters = Array(lists.size) { 0 }
+        val length = lists.fold(1) { acc, list -> acc * list.size }
+
+        for (i in 0 until length) {
+            val result = lists.mapIndexed { index, list ->
+                list[counters[index]]
+            }
+            yield(result)
+            for (pointer in lists.size - 1 downTo 0) {
+                counters[pointer]++
+                if (counters[pointer] == lists[pointer].size) {
+                    counters[pointer] = 0
+                } else {
+                    break
+                }
+            }
+        }
+    }
+}
