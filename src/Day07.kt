@@ -15,14 +15,13 @@ fun main() {
         generateSequence { this }.take(times).toList()
 
     data class Operation(val result: Long, val numbers: List<Long>) {
-        fun isValid(operands: List<String>): Boolean {
-            return result in cartesian(operands * (numbers.size - 1)).map {
+        fun isValid(operands: List<String>) =
+            result in cartesian(operands * (numbers.size - 1)).map {
                 numbers.reduceIndexed { index, acc, num ->
                     if (index == 0) acc
                     else it[index - 1].calc(acc, num)
                 }
             }
-        }
     }
 
     fun parse(input: List<String>): List<Operation> {
