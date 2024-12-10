@@ -21,3 +21,14 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  * The cleaner shorthand for printing output.
  */
 fun Any?.println() = println(this)
+
+fun List<String>.matrix(): MutableMap<Point, Int> {
+    val matrix = mutableMapOf<Point, Int>()
+    this.forEachIndexed { y, row ->
+        row.forEachIndexed { x, c ->
+            matrix[Point(x, y)] = c.digitToInt()
+        }
+    }
+
+    return matrix
+}
