@@ -32,3 +32,14 @@ fun List<String>.matrix(): MutableMap<Point, Int> {
 
     return matrix
 }
+
+fun List<String>.matrixAsChars(): MutableMap<Point, Char> {
+    val matrix = mutableMapOf<Point, Char>()
+    this.forEachIndexed { y, row ->
+        row.forEachIndexed { x, c ->
+            matrix[Point(x, y)] = c
+        }
+    }
+
+    return matrix
+}
