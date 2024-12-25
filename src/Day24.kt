@@ -35,10 +35,6 @@ fun main() {
         return wires to gates
     }
 
-    fun MutableMap<String, Int>.at(n: Int): Int? {
-        return this["z${String.format("%02d", n)}"]
-    }
-
     fun MutableMap<String, Int>.readDisplay() =
         entries.filter { it.key.startsWith("z") }
             .sortedByDescending { it.key }
